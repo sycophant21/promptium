@@ -119,7 +119,7 @@ public class ActionHandler {
     }
 
     public List<Double> getAccurateCoordinatesFromMoonDream(String image, String elementLabel) {
-        JSONArray coordinates = Unirest.post("https://api.moondream.ai/v1/detect").header("Content-Type", "application/json").header("X-Moondream-Auth", "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJrZXlfaWQiOiJlZWIzNzQwZC05N2NkLTQ3ZTQtYWQ4YS04NzNjZTJmMTc1ZjUiLCJvcmdfaWQiOiJCRkF6c0ZxdGxuZnFCaW1lQWZhUEVnTldXOVZrUWZoMyIsImlhdCI6MTc0NDU0NTk1OSwidmVyIjoxfQ.gQ4B4ReFmQaZOkBBjP1R_6iecSbDHWQIlUN4fXxatfA").body(Unirest.config().getObjectMapper().writeValue(new MoondreamRequestBody("data:image/png;base64," + image, elementLabel))).asJson().getBody().getObject().getJSONArray("objects");
+        JSONArray coordinates = Unirest.post("https://api.moondream.ai/v1/detect").header("Content-Type", "application/json").header("X-Moondream-Auth", System.getProperty("moondream.api.key")).body(Unirest.config().getObjectMapper().writeValue(new MoondreamRequestBody("data:image/png;base64," + image, elementLabel))).asJson().getBody().getObject().getJSONArray("objects");
         JSONObject coordinate = coordinates.getJSONObject(0);
         return List.of(coordinate.getDouble("x_min"), coordinate.getDouble("y_min"), coordinate.getDouble("x_max"), coordinate.getDouble("y_max"));
     }
