@@ -42,7 +42,7 @@ src/
 │           └── util/          # Image (Screenshot) and Page Source utilities
 ```
 
-## Configration Steps
+## Configration Steps (for macOS)
 
 1. Install Homebrew
     1. Install:
