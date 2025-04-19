@@ -87,7 +87,7 @@ src/
     {
       "promptium": {
         "command": "java",
-        "args": ["-jar", "Path/to/your/compiled/jar"]
+        "args": ["-jar", "Absolute-Path/to/your/compiled/jar"]
       }
     }
     ```
