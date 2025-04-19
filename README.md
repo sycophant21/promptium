@@ -73,7 +73,7 @@ src/
 
 1. Download Claude Desktop from https://claude.ai/download (Mcp not supported on claude web yet.)
 2. Setup MCP -> Settings > Developer > Edit Config
-3. Add the following code to ```claude_desktop_config.json``` under ```mcpServers```
+3. Add the following code to ```claude_desktop_config.json``` under ```mcpServers```, if you want to use the offical release.
     ```json
     {
       "promptium": {
@@ -82,3 +82,13 @@ src/
       }
     }
     ```
+4. Add the following code to ```claude_desktop_config.json``` under ```mcpServers```, if you want to use your own compiled version.
+   ```json
+    {
+      "promptium": {
+        "command": "java",
+        "args": ["-jar", "Path/to/your/compiled/jar"]
+      }
+    }
+    ```
+   *Note*: Jar can be compiled using java and maven, the instructions to create the jar are already written in the pom.xml file, just run ```mvn package``` in the project folder and you will find the jar inside "/target" folder. Use the shaded jar.
